@@ -74,7 +74,7 @@ def train(rank, world_size, args):
     ####################################################################################
 
     hubert = Hubert(mask=args.mask).to(rank)
-
+    print("Created model, will train now")
     if args.warmstart:
         checkpoint = torch.hub.load_state_dict_from_url(
             URLS["hubert-discrete"], map_location={"cuda:0": f"cuda:{rank}"}
